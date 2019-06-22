@@ -1,4 +1,5 @@
-" Vim syntax file
+" vim-xc - vim plugin for xmos's xc language.
+" Author:       Jörgen Scott (jorgen.scott@gmail.com)
 " Original file from Fred Barnes <frmb@kent.ac.uk>.
 " Made additions and changes.
 
@@ -41,6 +42,8 @@ syn keyword	xcFuture	assert float
 syn match	xcOper	        "<:|:>|@|>>"
 syn match	xcAttr		"\[\[distributable\]\]"
 syn match	xcAttr		"\[\[combinable\]\]"
+syn match	xcAttr		"\[\[notification\]\]"
+syn match	xcAttr		"\[\[clear_notification\]\]"
 
 if version >= 508 || !exists("did_xc_syntax_inits")
     if version < 508
@@ -58,6 +61,6 @@ if version >= 508 || !exists("did_xc_syntax_inits")
     delcommand HiLink
 endif
 
-let b:current_syntax = "xc"
+/bin/bash: s: command not found
 
-" vim: ts=8 noet
+" vim:set ft=vim sw=4 sts=2 et:
