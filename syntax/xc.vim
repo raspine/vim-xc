@@ -1,7 +1,6 @@
 " Vim syntax file
-" Language:     xc (XMOS C)
-" Maintainer:   Fred Barnes  <frmb@kent.ac.uk>
-" Last Change:  01/11/2008
+" Original file from Fred Barnes <frmb@kent.ac.uk>.
+" Made additions and changes.
 
 if version < 600
     syntax clear
@@ -17,36 +16,6 @@ else
     unlet b:current_syntax
 endif
 
-setlocal conceallevel=2
-setlocal concealcursor=nv
-
-syn clear cUserCont
-syn match   cppCustomConcealNot       "!" conceal cchar=¬ contains=cppCustomConceal
-syn match   cppCustomConceal         "<:" conceal cchar=←
-syn match   cppCustomConceal         ":>" conceal cchar=→
-syn match   cppCustomConceal         "->" conceal cchar=→
-syn match   cppCustomConceal         "=>" conceal cchar=⇒
-syn match   cppCustomConceal         "==" conceal cchar=≡
-syn match   cppCustomConceal         "\[\[" conceal cchar=⟮
-syn match   cppCustomConceal         "\]\]" conceal cchar=⟯
-syn match   cppCustomConceal         "!=" conceal cchar=≠"contains=cppCustomConcealNot
-syn match   cppCustomConceal         "<=" conceal cchar=≤
-syn match   cppCustomConceal         ">=" conceal cchar=≥
-syn match   cppCustomConceal         "<<" conceal cchar=≪
-syn match   cppCustomConceal         ">>" conceal cchar=≫
-syn match   cppCustomConceal         "&&" conceal cchar=∧
-syn match   cppCustomConceal         "||" conceal cchar=∨
-
-syn match   xcCustomConst            "XS1_[A-Z_0-9]\+"
-syn match   binaryNumber             "0b[01]\+"
-
-
-hi def link cppCustomConceal Operator
-hi def link cppCustomConcealNot Operator
-hi def link xcCustomConst Constant
-hi Conceal ctermbg=NONE ctermfg=NONE
-hi def link binaryNumber Number
-
 " XC extensions
 syn keyword	xcReserved	auto else return union
 syn keyword	xcReserved	break enum short unsigned
@@ -55,24 +24,23 @@ syn keyword	xcReserved	char for sizeof volatile
 syn keyword	xcReserved	const if static while
 syn keyword	xcReserved	continue int struct
 syn keyword	xcReserved	default long switch
-syn keyword	xcReserved	do register typedef interface server client
+syn keyword	xcReserved	do register typedef
 
 syn keyword	xcType		buffered par timer
 syn keyword	xcType		chan inline port transaction streaming
 syn keyword	xcType		chanend master select when
-syn keyword	xcType		clock slave 
+syn keyword	xcType		timerafter pinseq pinsneq
+syn keyword	xcType		clock slave
 
 syn keyword	xcPortType	in out
 
 syn keyword	xcFuture	accept claim goto proc
 syn keyword	xcFuture	asm double module restrict
-syn keyword	xcFuture	assert float on
+syn keyword	xcFuture	assert float
 
-syn keyword     Macro          combine combinable
-
-syn keyword     Type       timerafter pinseq pinsneq
-
-"syn match	xcIOOper	"<:\|:>\|@\|>>"
+syn match	xcOper	        "<:|:>|@|>>"
+syn match	xcAttr		"\[\[distributable\]\]"
+syn match	xcAttr		"\[\[combinable\]\]"
 
 if version >= 508 || !exists("did_xc_syntax_inits")
     if version < 508
@@ -82,13 +50,14 @@ if version >= 508 || !exists("did_xc_syntax_inits")
         command -nargs=+ HiLink hi def link <args>
     endif
     HiLink xcReserved		Type
-    HiLink xcType			Type
+    HiLink xcType		Type
     HiLink xcPortType		Type
     HiLink xcFuture		Keyword
-    HiLink xcIOOper		Operator
+    HiLink xcOper		Operator
+    HiLink xcAttr		Operator
     delcommand HiLink
 endif
 
 let b:current_syntax = "xc"
 
-" vim: ts=8
+" vim: ts=8 noet
