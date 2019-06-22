@@ -61,6 +61,4 @@ if version >= 508 || !exists("did_xc_syntax_inits")
     delcommand HiLink
 endif
 
-/bin/bash: s: command not found
-
 " vim:set ft=vim sw=4 sts=2 et:
