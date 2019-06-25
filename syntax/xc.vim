@@ -25,7 +25,7 @@ syn keyword	xcReserved	char for sizeof volatile
 syn keyword	xcReserved	const if static while
 syn keyword	xcReserved	continue int struct
 syn keyword	xcReserved	default long switch
-syn keyword	xcReserved	do register typedef
+syn keyword	xcReserved	do register typedef interface server client
 
 syn keyword	xcType		buffered par timer
 syn keyword	xcType		chan inline port transaction streaming
@@ -37,7 +37,7 @@ syn keyword	xcPortType	in out
 
 syn keyword	xcFuture	accept claim goto proc
 syn keyword	xcFuture	asm double module restrict
-syn keyword	xcFuture	assert float
+syn keyword	xcFuture	assert float on
 
 syn match	xcOper	        "<:|:>|@|>>"
 syn match	xcAttr		"\[\[distributable\]\]"
