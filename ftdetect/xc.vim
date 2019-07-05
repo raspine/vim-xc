@@ -3,3 +3,4 @@
 "
 autocmd BufNewFile,BufRead *.xc set ft=xc
 autocmd BufNewFile,BufRead *.h set ft=xc
+autocmd BufNewFile,BufRead *.xn set ft=xml
